@@ -4,18 +4,30 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
+    "start": "mongod | nodemon --exec babel-node app.js",
     "build": "babel-node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "2.6.3",
     "babel-cli": "6.26.0",
+    "babel-plugin-module-resolver": "3.2.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-stage-3": "6.24.1",
+    "bcrypt": "3.0.6",
+    "check-types": "8.0.3",
     "dotenv": "8.0.0",
     "express": "4.17.0",
+    "graphql": "14.3.1",
+    "graphql-depth-limit": "1.1.0",
+    "graphql-iso-date": "3.6.1",
+    "graphql-type-json": "0.3.0",
+    "graphql-upload": "8.0.7",
+    "lodash": "4.17.11",
+    "merge-graphql-schemas": "1.5.8",
+    "mongoose": "5.5.15",
     "nodemon": "1.19.0"
   }
 }

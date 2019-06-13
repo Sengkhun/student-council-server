@@ -1,3 +1,25 @@
 {
-  "presets": [ "env", "stage-3" ]
+  "presets": [
+    [
+      "env", 
+      {
+        "targets": {
+          "node": "current"
+        }
+      }, 
+    ],
+    "stage-3" 
+  ],
+  "plugins": [
+    [ "module-resolver", {
+        "root": [ "./" ],
+        "alias": {
+          "/": "./",
+          "models": "./models",
+          "constants": "./lib/constants",
+          "errors": "./functions/errors"
+        }
+      },
+    ],
+  ],
 }
