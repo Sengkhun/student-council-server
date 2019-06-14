@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 
-const feedbackResponseSchema = new Schema({
+const feedbackChatSchema = new Schema({
   feedbackId: {
     type: Schema.Types.ObjectId,
     ref: 'feedbacks',
@@ -15,7 +15,7 @@ const feedbackResponseSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'images'
   },
-  response: {
+  message: {
     type: String,
     trim: true
   },
@@ -26,4 +26,4 @@ const feedbackResponseSchema = new Schema({
   },
 });
 
-export default feedbackResponseSchema;
+export default feedbackChatSchema;

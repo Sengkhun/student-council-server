@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 import AnnouncementImages from './announcementImages';
 import Announcements from './announcements';
+import FeedbackChats from './feedbackChats';
 import FeedbackImages from './feedbackImages';
-import FeedbackResponses from './feedbackResponses';
 import Feedbacks from './feedbacks';
 import Images from './images';
 import Users from './users';
@@ -26,8 +26,8 @@ export default connectDb;
 export {
   AnnouncementImages,
   Announcements,
+  FeedbackChats,
   FeedbackImages,
-  FeedbackResponses,
   Feedbacks,
   Images,
   Users
