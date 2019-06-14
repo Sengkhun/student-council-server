@@ -53,17 +53,14 @@ const loginTokenSchema = new Schema({
 // =====================================================
 
 const userSchema = new Schema({
-  createdBy: {
-    type: Schema.Types.ObjectId,
-    ref: 'users'
-  },
-  username: {
+  firstName: {
     type: String,
-    unique: true,
-    sparse: true,
     trim: true,
-    minlength: 2,
-    maxLength: 20,
+    required: true
+  },
+  lastName: {
+    type: String,
+    trim: true,
     required: true
   },
   email: {
@@ -78,18 +75,12 @@ const userSchema = new Schema({
   loginTokens: {
     type: [loginTokenSchema]
   },
-  roles: {
-    type: [String],
-    index: true,
-    lowercase: true,
-    trim: true,
-    default: USER,
-    required: true
-  },
-  type: {
+  role: {
     type: String,
     index: true,
     enum: [USER, ADMIN],
+    lowercase: true,
+    trim: true,
     default: USER,
     required: true
   },
@@ -100,7 +91,7 @@ const userSchema = new Schema({
     required: true
   }
 }, {
-  timestamps: true,
+  timestamps: true
 });
 
 export default userSchema;

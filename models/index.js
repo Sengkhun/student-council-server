@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
 
+import AnnouncementImages from './announcementImages';
+import Announcements from './announcements';
+import FeedbackImages from './feedbackImages';
+import FeedbackResponses from './feedbackResponses';
+import Feedbacks from './feedbacks';
+import Images from './images';
 import Users from './users';
 
 // always run validator
@@ -18,5 +24,11 @@ const connectDb = () => {
 export default connectDb;
 
 export {
+  AnnouncementImages,
+  Announcements,
+  FeedbackImages,
+  FeedbackResponses,
+  Feedbacks,
+  Images,
   Users
 };
