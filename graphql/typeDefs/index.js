@@ -12,6 +12,9 @@ import typeResponse from '/graphql/typeDefs/type/response';
 import typeScalar from '/graphql/typeDefs/type/scalar';
 import typeUser from '/graphql/typeDefs/type/user';
 
+// user
+import userUser from '/graphql/typeDefs/user/user';
+
 // remove when use, putting dump due to prevent error in GQL
 import dump from '/graphql/typeDefs/dump';
 
@@ -27,7 +30,9 @@ const typeDefs = [
   typeScalar,
   typeUser,
 
-  dump  // remove when use
+  dump,  // remove when use
+
+  userUser
 ];
 
 export default mergeTypes(typeDefs);

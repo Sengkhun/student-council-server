@@ -6,11 +6,16 @@ import typeFeedback from '/graphql/resolvers/type/feedback';
 import typeFeedbackChat from '/graphql/resolvers/type/feedbackChat';
 import typeScalar from '/graphql/resolvers/type/scalar';
 
+// user
+import userUser from '/graphql/resolvers/user/user';
+
 const resolvers = [
   typeAnnouncement,
   typeFeedback,
   typeFeedbackChat,
-  typeScalar
+  typeScalar,
+
+  userUser
 ];
 
 export default mergeResolvers(resolvers);
