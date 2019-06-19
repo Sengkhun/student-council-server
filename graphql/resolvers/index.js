@@ -8,6 +8,7 @@ import typeScalar from '/graphql/resolvers/type/scalar';
 
 // admin
 import adminAnnouncement from '/graphql/resolvers/admin/announcement';
+import adminAuthentication from '/graphql/resolvers/admin/authentication';
 import adminFeedback from '/graphql/resolvers/admin/feedback';
 import adminUser from '/graphql/resolvers/admin/user';
 
@@ -21,6 +22,7 @@ const resolvers = [
   typeScalar,
 
   adminAnnouncement,
+  adminAuthentication,
   adminFeedback,
   adminUser,
 

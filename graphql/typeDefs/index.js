@@ -14,6 +14,7 @@ import typeUser from '/graphql/typeDefs/type/user';
 
 // admin
 import adminAnnouncement from '/graphql/typeDefs/admin/announcement';
+import adminAuthentication from '/graphql/typeDefs/admin/authentication';
 import adminFeedback from '/graphql/typeDefs/admin/feedback';
 import adminUser from '/graphql/typeDefs/admin/user';
 
@@ -35,7 +36,8 @@ const typeDefs = [
   typeScalar,
   typeUser,
 
-  adminAnnouncement,
+  adminAnnouncement,  
+  adminAuthentication,
   adminFeedback,
   adminUser,
 
