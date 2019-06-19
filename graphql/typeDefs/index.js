@@ -12,8 +12,13 @@ import typeResponse from '/graphql/typeDefs/type/response';
 import typeScalar from '/graphql/typeDefs/type/scalar';
 import typeUser from '/graphql/typeDefs/type/user';
 
-// user
-import userUser from '/graphql/typeDefs/user/user';
+// admin
+import adminAnnouncement from '/graphql/typeDefs/admin/announcement';
+import adminFeedback from '/graphql/typeDefs/admin/feedback';
+import adminUser from '/graphql/typeDefs/admin/user';
+
+// student
+import studentUser from '/graphql/typeDefs/student/user';
 
 // remove when use, putting dump due to prevent error in GQL
 import dump from '/graphql/typeDefs/dump';
@@ -30,9 +35,13 @@ const typeDefs = [
   typeScalar,
   typeUser,
 
+  adminAnnouncement,
+  adminFeedback,
+  adminUser,
+
   dump,  // remove when use
 
-  userUser
+  studentUser
 ];
 
 export default mergeTypes(typeDefs);

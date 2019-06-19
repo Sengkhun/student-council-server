@@ -17,6 +17,11 @@ const announcementSchema = new Schema({
     trim: true,
     required: true
   },
+  pin: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
   date: {
     type: Date
   },
