@@ -9,7 +9,7 @@ import { generateToken } from '/functions/authentication/token';
 export const loginWithPassword = async args => {
   const { email, password } = args;
   const user = await Users
-    .findOne({ 'email.address': email, roles: ADMIN, type: ADMIN })
+    .findOne({ 'email.address': email.toLowerCase(), role: ADMIN })
     .select('password')
     .lean();
 

@@ -9,7 +9,7 @@ export const getUserByToken = async token => {
 
   const user = await Users
     .findOne({ 'loginTokens.token': token })
-    .select('roles type')
+    .select('role')
     .lean();
 
   // update last access time

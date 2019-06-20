@@ -26,7 +26,7 @@ export const createAccountAdmin = async args => {
     lastName,
     email: email && { address: email },
     password: { bcrypt: hashedPassword },
-    roles: ADMIN
+    role: ADMIN
   });
   
   if (!user) {

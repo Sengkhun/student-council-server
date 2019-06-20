@@ -23,7 +23,7 @@ export default {
 
     verifyTokenAdmin: async (parent, args, { user }) => {
       try {
-        await isAllow(user, ADMIN, ADMIN);
+        await isAllow(user, ADMIN);
         const query = { _id: user._id, status: true };
         const userInfo = await getUser(query);
         return { ok: true, user: userInfo };
@@ -36,7 +36,7 @@ export default {
 
     logoutAdmin: async (parent, { token }, { user }) => {
       try {
-        await isAllow(user, ADMIN, ADMIN);
+        await isAllow(user, ADMIN);
         await removeToken(user._id, { token });
         return { ok: true };
         
