@@ -14,7 +14,7 @@ export default gql`
       skip: Int
     ): FeedbacksResponse!
 
-    getFeedbackDetail(
+    getFeedbackDetailAdmin(
       feedbackId: ID!
     ): FeedbackResponse!
 

@@ -28,3 +28,20 @@ export const getFeedbackImages = async ({ query, sort } = {}) => {
 
   return images;
 };
+
+// =====================================================
+
+export const getFirstFeedbackImage = async ({ query } = {}) => {
+  const feedbackImage = await FeedbackImages
+    .findOne(query || { status: true })
+    .sort('order')
+    .lean();
+
+  if (feedbackImage) {
+    const { imageId } = feedbackImage;
+    const img = await getImage({ _id: imageId });
+    return img;
+  } else {
+    return null;
+  }
+};

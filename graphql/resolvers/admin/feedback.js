@@ -10,7 +10,7 @@ export default {
       const { limit, skip } = args;
     },
 
-    getFeedbackDetail: async (parent, args, context) => {
+    getFeedbackDetailAdmin: async (parent, args, context) => {
       const { feedbackId } = args;
     }
 

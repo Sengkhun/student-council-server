@@ -19,10 +19,7 @@ import adminFeedback from '/graphql/typeDefs/admin/feedback';
 import adminUser from '/graphql/typeDefs/admin/user';
 
 // student
-import studentUser from '/graphql/typeDefs/student/user';
-
-// remove when use, putting dump due to prevent error in GQL
-import dump from '/graphql/typeDefs/dump';
+// import studentUser from '/graphql/typeDefs/student/user';
 
 const typeDefs = [
   typeAnnouncement,
@@ -41,9 +38,7 @@ const typeDefs = [
   adminFeedback,
   adminUser,
 
-  dump,  // remove when use
-
-  studentUser
+  // studentUser
 ];
 
 export default mergeTypes(typeDefs);
