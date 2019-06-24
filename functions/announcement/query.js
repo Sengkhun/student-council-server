@@ -14,7 +14,7 @@ export const getAnnouncementImages = async ({ query, sort } = {}) => {
   await Promise.all(
     images = _.map(announcementImages, async ({ imageId, order }) => {
       const img = await getImage({ _id: imageId });
-      return { ...img, order };
+      images.push({ ...img, order });
     })
   );
 
