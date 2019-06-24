@@ -43,3 +43,10 @@ export const deleteAccount = async userId => {
     await UserProfiles.deleteOne({ userId: userId || ' ' });
   }
 };
+
+// =====================================================
+
+export const editAccount = async ({ query, fields }) => {
+  const affected = await Users.updateOne(query, { $set: { ...fields } });
+  return affected;
+};

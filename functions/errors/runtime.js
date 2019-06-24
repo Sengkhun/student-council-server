@@ -4,7 +4,7 @@ class RuntimeError extends ApolloError {
 
   constructor(message, properties) {
     super(
-      message, 
+      message || 'Something went wrong, the action will not performance any action', 
       "RUNTIME_ERROR", 
       properties
     );
