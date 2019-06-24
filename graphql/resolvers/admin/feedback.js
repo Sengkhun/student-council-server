@@ -6,40 +6,64 @@ export default {
 
     getFeedbackAdmin: async (parent, args, context) => {
       const { limit, skip } = args;
-      const feeds = await Feedbacks.find({})
-        .sort({_id: -1})
-        .skip(skip)
-        .limit(limit)
-        .exec();
+      try{
+        const feeds = await Feedbacks.find({})
+          .sort({_id: -1})
+          .skip(skip)
+          .limit(limit)
+          .exec();
 
-      return {
-        ok: true, 
-        feedbacks: feeds
-      };
+        return {
+          ok: true, 
+          feedbacks: feeds
+        };
+      }catch (error) {
+        error = errorHandler(error);
+        return { 
+          ok: false, 
+          error 
+        };
+      }
     },
 
     getPinFeedbackAdmin: async (parent, args, context) => {
       const { limit, skip } = args;
-      const feeds = await Feedbacks.find({ pin: true })
-        .sort({_id: -1})
-        .skip(skip)
-        .limit(limit)
-        .exec();
+      try{
+        const feeds = await Feedbacks.find({ pin: true })
+          .sort({_id: -1})
+          .skip(skip)
+          .limit(limit)
+          .exec();
 
-      return {
-        ok: true, 
-        feedbacks: feeds
-      };
+        return {
+          ok: true, 
+          feedbacks: feeds
+        };
+      }catch (error) {
+        error = errorHandler(error);
+        return { 
+          ok: false, 
+          error 
+        };
+      }
     },
 
     getFeedbackDetailAdmin: async (parent, args, context) => {
       const { feedbackId } = args;
-      const feed = await Feedbacks.findOne({ _id: feedbackId });
+      try{
+        const feed = await Feedbacks.findOne({ _id: feedbackId });
       
-      return {
-        ok: true,
-        feedback: feed
-      };
+        return {
+          ok: true,
+          feedback: feed
+        };
+      }catch (error) {
+        error = errorHandler(error);
+        return { 
+          ok: false, 
+          error 
+        };
+      }
     }
 
   }
