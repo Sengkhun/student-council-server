@@ -1,0 +1,16 @@
+image: docker:latest
+
+services: 
+  - docker:dind
+
+stages: 
+  - deploy
+
+step-deploy-prod:
+  stage: deploy
+  only:
+    - master
+  script:
+    - docker build -t student_council_server -f ./Dockerfile ./
+  environment: production
+  when: manual
