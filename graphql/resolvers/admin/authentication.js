@@ -12,8 +12,8 @@ export default {
     loginAdmin: async (parent, args, context) => {
       try {
         const { email, password } = args;
-        const token = await loginWithPassword({ email, password });
-        return { ok: true, response: { token } };
+        const { token, role } = await loginWithPassword({ email, password });
+        return { ok: true, response: { token, role } };
         
       } catch (error) {
         error = errorHandler(error);

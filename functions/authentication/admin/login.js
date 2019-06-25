@@ -10,7 +10,7 @@ export const loginWithPassword = async args => {
   const { email, password } = args;
   const user = await Users
     .findOne({ 'email.address': email.toLowerCase(), role: ADMIN })
-    .select('password')
+    .select('password role')
     .lean();
 
   if (!user) {
@@ -26,5 +26,5 @@ export const loginWithPassword = async args => {
 
   // generate token
   const token = await generateToken(user._id);
-  return token;
+  return { token, role: user.role };
 };  
