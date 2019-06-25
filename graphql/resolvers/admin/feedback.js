@@ -1,68 +1,78 @@
-import { Feedbacks } from 'models';
+import { ADMIN } from 'constants';
+import { errorHandler } from 'errors';
+import { isAllow } from '/functions/middlewares';
+import { editFeedback } from '/functions/feedback/mutation';
+import { 
+  getFeedback, 
+  getFeedbacks 
+} from '/functions/feedback/query';
 
 export default {
 
   Query: {
 
-    getFeedbackAdmin: async (parent, args, context) => {
+    adminGetFeedback: async (parent, args, { user }) => {
       const { limit, skip } = args;
+      let feedbacks = [];
       try{
-        const feeds = await Feedbacks.find({})
-          .sort({_id: -1})
-          .skip(skip)
-          .limit(limit)
-          .exec();
+        await isAllow(user, ADMIN);
+        const query = { status: true };
+        const sort = '-createdAt';
+        feedbacks = await getFeedbacks({ query, sort, limit, skip });
+        return { ok: true, feedbacks };
 
-        return {
-          ok: true, 
-          feedbacks: feeds
-        };
       }catch (error) {
         error = errorHandler(error);
-        return { 
-          ok: false, 
-          error 
-        };
+        return { ok: false, feedbacks, error };
       }
     },
 
-    getPinFeedbackAdmin: async (parent, args, context) => {
+    adminGetPinFeedback: async (parent, args, { user }) => {
       const { limit, skip } = args;
+      let feedbacks = [];
       try{
-        const feeds = await Feedbacks.find({ pin: true })
-          .sort({_id: -1})
-          .skip(skip)
-          .limit(limit)
-          .exec();
+        await isAllow(user, ADMIN);
+        const query = { pin: true, status: true };
+        const sort = '-createdAt';
+        feedbacks = await getFeedbacks({ query, sort, limit, skip });
+        return { ok: true, feedbacks };
 
-        return {
-          ok: true, 
-          feedbacks: feeds
-        };
       }catch (error) {
         error = errorHandler(error);
-        return { 
-          ok: false, 
-          error 
-        };
+        return { ok: false, feedbacks, error };
       }
     },
 
-    getFeedbackDetailAdmin: async (parent, args, context) => {
+    adminGetFeedbackDetail: async (parent, args, { user }) => {
       const { feedbackId } = args;
       try{
-        const feed = await Feedbacks.findOne({ _id: feedbackId });
-      
-        return {
-          ok: true,
-          feedback: feed
-        };
+        await isAllow(user, ADMIN);
+        const query = { _id: feedbackId, status: true };
+        const feedback = await getFeedback(query);
+        return { ok: true, feedback };
+
       }catch (error) {
         error = errorHandler(error);
-        return { 
-          ok: false, 
-          error 
-        };
+        return { ok: false, error };
+      }
+    }
+
+  },
+
+  Mutation: {
+
+    adminPinFeedback: async (parent, args, { user }) => {
+      const { feedbackId } = args;
+      try {
+        await isAllow(user, ADMIN);
+        const query = { _id: feedbackId, status: true };
+        const update = { pin: true };
+        await editFeedback({ query, update });
+        return { ok: true };
+
+      } catch (error) {
+        error = errorHandler(error);
+        return { ok: false, error };
       }
     }
 

@@ -79,12 +79,12 @@ export const createAnnouncement = async args => {
 // =====================================================
 
 export const createAnnouncementImage = async args => {
-  const { announcementId, name, thumbnail, url, oder } = args;
+  const { announcementId, name, thumbnail, url, order } = args;
   const image = await createImage({ name, thumbnail, url });
   const announcementImage = await AnnouncementImages.create({
     announcementId,
     imageId: image._id,
-    oder
+    order
   });
 
   if (!announcementImage) {
@@ -101,6 +101,8 @@ export const deleteAnnouncement = async announcementId => {
     await Announcements.deleteOne({ _id: announcementId || ' ' });
   }
 };
+
+// =====================================================
 
 export const deleteAnnouncementImage = async announcementImageId => {
   if (announcementImageId) {

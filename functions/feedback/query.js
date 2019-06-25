@@ -12,6 +12,18 @@ export const getFeedback = async (query = {}) => {
 
 // =====================================================
 
+export const getFeedbacks = async ({ query, select, sort, limit, skip }) => {
+  return await Feedbacks
+    .findOne(query || { status: true })
+    .select(select)
+    .sort(sort)
+    .limit(limit)
+    .skip(skip)
+    .lean();
+};
+
+// =====================================================
+
 export const getFeedbackImages = async ({ query, sort } = {}) => {
   const feedbackImages = await FeedbackImages
     .find(query || { status: true })

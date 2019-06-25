@@ -6,6 +6,7 @@ export default gql`
     _id: ID!
     tag: String!
     description: String!
+    pin: Boolean!
     createdAt: Date!
 
     user: User!

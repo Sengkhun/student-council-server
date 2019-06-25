@@ -4,19 +4,27 @@ export default gql`
 
   type Query {
 
-    getFeedbackAdmin(
+    adminGetFeedback(
       limit: Int!
       skip: Int
     ): FeedbacksResponse!
 
-    getPinFeedbackAdmin(
+    adminGetPinFeedback(
       limit: Int!
       skip: Int
     ): FeedbacksResponse!
 
-    getFeedbackDetailAdmin(
+    adminGetFeedbackDetail(
       feedbackId: ID!
     ): FeedbackResponse!
+
+  }
+
+  type Mutation {
+
+    adminPinFeedback(
+      feedbackId: ID!
+    ): Response!
 
   }
 

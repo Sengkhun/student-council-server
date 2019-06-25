@@ -13,4 +13,10 @@ export default gql`
     news
   }
 
+  enum AllowFeedbackTag {
+    facility
+    instructor
+    student
+  }
+
 `;

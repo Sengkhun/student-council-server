@@ -15,6 +15,7 @@ import adminUser from '/graphql/resolvers/admin/user';
 // student
 import studentAnnouncement from '/graphql/resolvers/student/announcement';
 import studentAuthentication from '/graphql/resolvers/student/authentication';
+import studentFeedback from '/graphql/resolvers/student/feedback';
 import studentUser from '/graphql/resolvers/student/user';
 
 const resolvers = [
@@ -30,6 +31,7 @@ const resolvers = [
 
   studentAnnouncement,
   studentAuthentication,
+  studentFeedback,
   studentUser
 ];
 

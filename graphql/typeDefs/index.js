@@ -21,6 +21,7 @@ import adminUser from '/graphql/typeDefs/admin/user';
 // student
 import studentAnnouncement from '/graphql/typeDefs/student/announcement';
 import studentAuthentication from '/graphql/typeDefs/student/authentication';
+import studentFeedback from '/graphql/typeDefs/student/feedback';
 import studentUser from '/graphql/typeDefs/student/user';
 
 const typeDefs = [
@@ -42,6 +43,7 @@ const typeDefs = [
 
   studentAnnouncement,
   studentAuthentication,
+  studentFeedback,
   studentUser
 ];
 
