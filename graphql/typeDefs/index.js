@@ -19,7 +19,9 @@ import adminFeedback from '/graphql/typeDefs/admin/feedback';
 import adminUser from '/graphql/typeDefs/admin/user';
 
 // student
-// import studentUser from '/graphql/typeDefs/student/user';
+import studentAnnouncement from '/graphql/typeDefs/student/announcement';
+import studentAuthentication from '/graphql/typeDefs/student/authentication';
+import studentUser from '/graphql/typeDefs/student/user';
 
 const typeDefs = [
   typeAnnouncement,
@@ -38,7 +40,9 @@ const typeDefs = [
   adminFeedback,
   adminUser,
 
-  // studentUser
+  studentAnnouncement,
+  studentAuthentication,
+  studentUser
 ];
 
 export default mergeTypes(typeDefs);

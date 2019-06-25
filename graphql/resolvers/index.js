@@ -13,7 +13,9 @@ import adminFeedback from '/graphql/resolvers/admin/feedback';
 import adminUser from '/graphql/resolvers/admin/user';
 
 // student
-// import studentUser from '/graphql/resolvers/student/user';
+import studentAnnouncement from '/graphql/resolvers/student/announcement';
+import studentAuthentication from '/graphql/resolvers/student/authentication';
+import studentUser from '/graphql/resolvers/student/user';
 
 const resolvers = [
   typeAnnouncement,
@@ -26,7 +28,9 @@ const resolvers = [
   adminFeedback,
   adminUser,
 
-  // studentUser
+  studentAnnouncement,
+  studentAuthentication,
+  studentUser
 ];
 
 export default mergeResolvers(resolvers);

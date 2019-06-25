@@ -1,6 +1,6 @@
-import { Users } from 'models';
-import { ADMIN } from 'constants';
+import { ADMIN, USER } from 'constants';
 import { RuntimeError } from 'errors';
+import { Users } from 'models';
 import { 
   checkEmail, 
   checkPassword
@@ -27,6 +27,35 @@ export const createAccountAdmin = async args => {
     email: email && { address: email },
     password: { bcrypt: hashedPassword },
     role: ADMIN
+  });
+  
+  if (!user) {
+    throw new RuntimeError('Cannot create user');
+  }
+
+};
+
+// args = { firstName, lastName, email, password, confirmPassword }
+export const createAccountUser = async args => {
+
+  const { firstName, lastName, email, password, confirmPassword } = args;
+
+  // check if paragonu email
+  await checkEmail(email);
+
+  // check and encrypt password
+  const hashedPassword = await checkPassword({ 
+    password,
+    confirmPassword, 
+    encrypt: true 
+  });
+  
+  const user = await Users.create({
+    firstName, 
+    lastName,
+    email: email && { address: email },
+    password: { bcrypt: hashedPassword },
+    role: USER
   });
   
   if (!user) {

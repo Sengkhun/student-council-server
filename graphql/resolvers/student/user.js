@@ -1,17 +1,17 @@
-import { ADMIN } from 'constants';
+import { USER } from 'constants';
 import { errorHandler, RuntimeError } from 'errors';
 import { isAllow } from '/functions/middlewares';
 import { changePassword } from '/functions/authentication/password';
-import { createAccountAdmin, editAccount } from '/functions/user/mutation';
+import { createAccountUser, editAccount } from '/functions/user/mutation';
 import { getUser } from '/functions/user/query';
 
 export default {
 
   Query: {
 
-    getCurrentUserAdmin: async (parent, args, { user }) => {
+    userGetCurrentUser: async (parent, args, { user }) => {
       try {
-        await isAllow(user, ADMIN);
+        await isAllow(user, USER);
         const query = { _id: user._id, status: true };
         const currentUser = await getUser(query);
         return { ok: true, user: currentUser };
@@ -26,9 +26,9 @@ export default {
 
   Mutation: {
 
-    createUserAdmin: async (parent, args, context) => {
+    userCreateUser: async (parent, args, context) => {
       try {
-        await createAccountAdmin(args);
+        await createAccountUser(args);
         return { ok: true };
 
       } catch (error) {
@@ -37,10 +37,10 @@ export default {
       }
     }, 
 
-    editUserNameAdmin: async (parent, args, { user }) => {
+    userEditUserName: async (parent, args, { user }) => {
       const { firstName, lastName } = args;
       try {
-        await isAllow(user, ADMIN);
+        await isAllow(user, USER);
         const query = { _id: user._id, status: true };
         const fields = { firstName, lastName };
         const affected = await editAccount({ query, fields });
@@ -56,10 +56,10 @@ export default {
       }
     },
 
-    editUserPasswordAdmin: async (parent, args, { user }) => {
+    userEditUserPassword: async (parent, args, { user }) => {
       const { currentPassword, newPassword, confirmPassword } = args;
       try {
-        await isAllow(user, ADMIN);
+        await isAllow(user, USER);
         await changePassword({
           userId: user._id,
           currentPassword,
