@@ -7,4 +7,10 @@ export default gql`
     female
   }
 
+  enum AllowAnnouncementTag {
+    event
+    announcement
+    news
+  }
+
 `;

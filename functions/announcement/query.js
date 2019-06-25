@@ -1,6 +1,28 @@
 import _ from 'lodash';
-import { AnnouncementImages } from 'models';
+import { Announcements, AnnouncementImages } from 'models';
 import { getImage } from '/functions/image/query';
+
+// =====================================================
+
+export const getAnnouncement = async ({ query, select }) => {
+  const announcement = await Announcements
+    .findOne(query || { status: true })
+    .select(select)
+    .lean();
+  return announcement;
+};
+
+// =====================================================
+
+export const getAnnouncements = async ({ query, sort, limit, skip }) => {
+  const announcements = await Announcements
+    .find(query || { status: true })
+    .sort(sort)
+    .limit(limit)
+    .skip(skip)
+    .lean();
+  return announcements;
+};
 
 // =====================================================
 

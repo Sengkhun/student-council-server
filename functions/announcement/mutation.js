@@ -20,7 +20,7 @@ import {
 // =====================================================
 
 export const createAnnouncement = async args => {
-  const { streamImages, tag, title, date, from, to, description } = args;
+  const { streamImages, tag, title, date, from, to, description, createdBy } = args;
   let announcement = null;
   let announcementImages = [];
 
@@ -29,9 +29,10 @@ export const createAnnouncement = async args => {
       tag, 
       title, 
       date, 
-      from, 
-      to, 
-      description
+      from,
+      to,
+      description,
+      createdBy
     });
 
     if (!announcement) {

@@ -24,7 +24,7 @@ export default gql`
 
   type AnnouncementsResponse {
     ok: Boolean!
-    Announcements: [Announcement!]!
+    announcements: [Announcement!]!
     error: Error
   }
   
