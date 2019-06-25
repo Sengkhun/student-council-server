@@ -23,6 +23,11 @@ const feedbackSchema = new Schema({
     index: true,
     default: true,
     required: true
+  },
+  pin: {
+    type: Boolean,
+    default: false,
+    required: true
   }
 }, {
   timestamps: true
