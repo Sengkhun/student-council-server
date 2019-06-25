@@ -34,11 +34,28 @@ export const getAnnouncementImages = async ({ query, sort } = {}) => {
 
   let images = [];
   await Promise.all(
-    images = _.map(announcementImages, async ({ imageId, order }) => {
+    await _.map(announcementImages, async ({ imageId, order }) => {
       const img = await getImage({ _id: imageId });
       images.push({ ...img, order });
     })
   );
 
   return images;
+};
+
+// =====================================================
+
+export const getFirstAnnouncementImage = async ({ query } = {}) => {
+  const announcementImage = await AnnouncementImages
+    .findOne(query || { status: true })
+    .sort('order')
+    .lean();
+
+  if (announcementImage) {
+    const { imageId } = announcementImage;
+    const img = await getImage({ _id: imageId });
+    return img;
+  } else {
+    return null;
+  }
 };

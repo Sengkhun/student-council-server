@@ -13,6 +13,7 @@ export default gql`
     createdAt: Date!
 
     createdBy: User!
+    image: Image
     images: [Images!]!
   }
 

@@ -5,12 +5,12 @@ export default gql`
   type Query {
 
     adminGetFeedback(
-      limit: Int!
+      limit: Int
       skip: Int
     ): FeedbacksResponse!
 
     adminGetPinFeedback(
-      limit: Int!
+      limit: Int
       skip: Int
     ): FeedbacksResponse!
 

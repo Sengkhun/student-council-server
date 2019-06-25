@@ -1,5 +1,8 @@
 import { getUser } from '/functions/user/query';
-import { getAnnouncementImages } from '/functions/announcement/query';
+import { 
+  getFirstAnnouncementImage,
+  getAnnouncementImages 
+} from '/functions/announcement/query';
 
 export default {
 
@@ -8,6 +11,12 @@ export default {
     createdBy: async (parent, args, { user }) => {
       const query = { _id: parent.createdBy, status: true };
       return await getUser(query);
+    },
+
+    image: async (parent, args, { user }) => {
+      const query = { announcementId: parent._id, status: true };
+      const image = await getFirstAnnouncementImage({ query })
+      return image;
     },
 
     images: async (parent, args, { user }) => {

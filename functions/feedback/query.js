@@ -32,7 +32,7 @@ export const getFeedbackImages = async ({ query, sort } = {}) => {
 
   let images = [];
   await Promise.all(
-    images = _.map(feedbackImages, async ({ imageId, order }) => {
+    await _.map(feedbackImages, async ({ imageId, order }) => {
       const img = await getImage({ _id: imageId });
       images.push({ ...img, order });
     })

@@ -11,7 +11,9 @@ export default gql`
 
     userVerifyToken: UserResponse!
 
-    userLogout(token: String!): Response!
+    userLogout(
+      token: String!
+    ): Response!
 
   }
 
