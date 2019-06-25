@@ -51,7 +51,7 @@ export default {
       try {
         await isAllow(user, ADMIN);
         await createAnnouncement({
-          streamImages: images || [], 
+          streamImages: images || [],
           tag, 
           title, 
           date, 

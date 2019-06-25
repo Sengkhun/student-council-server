@@ -66,6 +66,7 @@ export const createFeedback = async args => {
         await deleteFeedbackImage(feedbackImageId)
       });
     }
+    throw error;
   }
 };
 

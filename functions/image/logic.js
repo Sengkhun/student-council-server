@@ -14,7 +14,11 @@ export const storeFS = async (folder, file) => {
     const { mimetype, createReadStream } = await file;
     stream = createReadStream();
 
-    const extension = _.last(mimetype.split('/')) || 'jpg';
+    const allowExtensions = ['jpg', 'jpeg', 'png'];
+    let extension = _.last(mimetype.split('/')) ;
+    if (!_.includes(allowExtensions, extension)) {
+      throw new RuntimeError(`${extension} file is not allow!`);
+    }
     const path = `${folder}${uniqid()}.${extension}`;
 
     return new Promise((resolve, reject) =>

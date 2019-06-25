@@ -73,6 +73,7 @@ export const createAnnouncement = async args => {
         await deleteAnnouncementImage(announcementImageId)
       });
     }
+    throw error;
   }
 };
 
