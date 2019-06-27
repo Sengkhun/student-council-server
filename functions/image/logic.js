@@ -1,10 +1,13 @@
 import _ from 'lodash';
 import fs from 'fs';
+import im from 'imagemagick';
 import Jimp from 'jimp';
 import uniqid from 'uniqid';
 import path from 'path';
+import { promisify } from 'promise-callbacks';
 import { THUMBNAIL_FOLDER } from 'constants';
 import { RuntimeError } from 'errors';
+
 
 // =====================================================
 
@@ -87,4 +90,32 @@ export const fsError = error => {
     throw new RuntimeError('File not found!');
   else
     throw new RuntimeError('Something went wrong with File System!');
+};
+
+// =====================================================
+
+export const ImageConverter = async args => {
+  const { imagePath, extension, removeOriginal } = args;
+
+  if (fs.existsSync(imagePath)) {
+    try {
+      const dir = path.dirname(imagePath);
+      const filename = path.basename(imagePath).split('.')[0];
+      const newPath = `${dir}/${filename}.${extension || 'jpg'}`;
+      
+      // convert image
+      const convert = promisify.method(im, 'convert');
+      await convert([imagePath, newPath]);
+
+      if (removeOriginal) {
+        await removeLocalImage(imagePath);  // remove heic image
+      }
+      return newPath;
+
+    } catch (error) {
+      throw new RuntimeError('Cannot convert HEIC image file!');
+    }
+  } else {
+    throw new RuntimeError('image not found');
+  }
 };
