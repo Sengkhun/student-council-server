@@ -8,7 +8,6 @@ import { promisify } from 'promise-callbacks';
 import { THUMBNAIL_FOLDER } from 'constants';
 import { RuntimeError } from 'errors';
 
-
 // =====================================================
 
 export const storeFS = async (folder, file) => {
@@ -17,11 +16,7 @@ export const storeFS = async (folder, file) => {
     const { mimetype, createReadStream } = await file;
     stream = createReadStream();
 
-    const allowExtensions = ['jpg', 'jpeg', 'png'];
-    let extension = _.last(mimetype.split('/')) ;
-    if (!_.includes(allowExtensions, extension)) {
-      throw new RuntimeError(`${extension} file is not allow!`);
-    }
+    const extension = _.last(mimetype.split('/') || 'jpg') ;
     const path = `${folder}${uniqid()}.${extension}`;
 
     return new Promise((resolve, reject) =>
@@ -117,5 +112,23 @@ export const ImageConverter = async args => {
     }
   } else {
     throw new RuntimeError('image not found');
+  }
+};
+
+// =====================================================
+
+export const imageTypeHandler = async args => {
+  const { imagePath } = args;
+
+  const extension = _.last(imagePath.split('.')).toLowerCase() || JPG;
+  const allowExtensions = [JPEG, JPG, PNG, HEIC];
+  const isAllow = _.includes(allowExtensions, extension);
+
+  if (!isAllow) {
+    throw new RuntimeError(`Image type .${extension} is not allow`);
+  }
+
+  if (extension === HEIC) {
+    await imageConverter({ imagePath, removeOriginal: true });
   }
 };

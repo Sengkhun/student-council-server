@@ -9,6 +9,7 @@ import {
 } from 'models';
 import { 
   createImageThumbnail,
+  imageTypeHandler,
   storeFS, 
   resizeImage 
 } from '/functions/image/logic';
@@ -43,6 +44,7 @@ export const createAnnouncement = async args => {
       await Promise.all(
         await _.map(streamImages, async (image, index) => {
           const imagePath = await storeFS(ANNOUNCEMENT_FOLDER, image);
+          await imageTypeHandler({ imagePath });
           await resizeImage({ imagePath, width: 800 });
 
           const filename = await path.basename(imagePath);

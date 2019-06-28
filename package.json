@@ -34,7 +34,7 @@
     "nodemailer": "6.2.1",
     "nodemon": "1.19.0",
     "path": "0.12.7",
-    "promise-callbacks": "^3.3.0",
+    "promise-callbacks": "3.3.0",
     "uniqid": "5.0.3"
   }
 }
