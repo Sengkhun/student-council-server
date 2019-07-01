@@ -23,7 +23,6 @@ export default {
 
     verifyTokenAdmin: async (parent, args, { user }) => {
       try {
-        await isAllow(user, ADMIN);
         const query = { _id: user._id, status: true };
         const userInfo = await getUser(query);
         return { ok: true, user: userInfo };
