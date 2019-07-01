@@ -89,7 +89,7 @@ export const fsError = error => {
 
 // =====================================================
 
-export const ImageConverter = async args => {
+export const imageConverter = async args => {
   const { imagePath, extension, removeOriginal } = args;
 
   if (fs.existsSync(imagePath)) {
@@ -120,15 +120,17 @@ export const ImageConverter = async args => {
 export const imageTypeHandler = async args => {
   const { imagePath } = args;
 
-  const extension = _.last(imagePath.split('.')).toLowerCase() || JPG;
-  const allowExtensions = [JPEG, JPG, PNG, HEIC];
+  const extension = _.last(imagePath.split('.')).toLowerCase() || 'jpg';
+  const allowExtensions = ['jpeg', 'jpg', 'png', 'heic'];
   const isAllow = _.includes(allowExtensions, extension);
 
   if (!isAllow) {
     throw new RuntimeError(`Image type .${extension} is not allow`);
   }
 
-  if (extension === HEIC) {
-    await imageConverter({ imagePath, removeOriginal: true });
+  if (extension === 'heic') {
+    const newPath = await imageConverter({ imagePath, removeOriginal: true });
+    return newPath;
   }
+  return imagePath;
 };

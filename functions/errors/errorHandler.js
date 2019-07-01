@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 export default error => {
+  console.log("TCL: error", error)
   let { code, name, extensions, message, path } = error;
 
   if (name === 'MongoError' || name === 'ValidationError') {

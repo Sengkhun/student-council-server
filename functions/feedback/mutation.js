@@ -36,8 +36,8 @@ export const createFeedback = async args => {
     if (check.nonEmptyArray(streamImages)) {
       await Promise.all(
         await _.map(streamImages, async (image, index) => {
-          const imagePath = await storeFS(FEEDBACK_FOLDER, image);
-          await imageTypeHandler({ imagePath });
+          let imagePath = await storeFS(FEEDBACK_FOLDER, image);
+          imagePath = await imageTypeHandler({ imagePath });
           await resizeImage({ imagePath, width: 800 });
 
           const filename = await path.basename(imagePath);

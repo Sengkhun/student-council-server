@@ -1,6 +1,6 @@
 import { USER } from 'constants';
 import { errorHandler } from 'errors';
-import { createFeedback } from '/functions/feedback/query';
+import { createFeedback } from '/functions/feedback/mutation';
 import { 
   getFeedback, 
   getFeedbacks 

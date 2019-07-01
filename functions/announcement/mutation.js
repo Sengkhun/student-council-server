@@ -43,8 +43,8 @@ export const createAnnouncement = async args => {
     if (check.nonEmptyArray(streamImages)) {
       await Promise.all(
         await _.map(streamImages, async (image, index) => {
-          const imagePath = await storeFS(ANNOUNCEMENT_FOLDER, image);
-          await imageTypeHandler({ imagePath });
+          let imagePath = await storeFS(ANNOUNCEMENT_FOLDER, image);
+          imagePath = await imageTypeHandler({ imagePath });
           await resizeImage({ imagePath, width: 800 });
 
           const filename = await path.basename(imagePath);
