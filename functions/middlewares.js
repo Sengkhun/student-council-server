@@ -8,10 +8,8 @@ import {
 
 export const isAllow = async (user, roles) => {
   if (user) {
-    const roleValidate = _.includes(roles, user.role);
-
     // check if role not valid
-    if (!roleValidate) {
+    if (roles !== user.role) {
       throw new ForbiddenError();
     }
   } else {

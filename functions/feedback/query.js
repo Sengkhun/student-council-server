@@ -14,7 +14,7 @@ export const getFeedback = async (query = {}) => {
 
 export const getFeedbacks = async ({ query, select, sort, limit, skip }) => {
   return await Feedbacks
-    .findOne(query || { status: true })
+    .find(query || { status: true })
     .select(select)
     .sort(sort)
     .limit(limit)
