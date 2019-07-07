@@ -8,7 +8,7 @@ export default gql`
 
     userGetFeedbackDetail(
       feedbackId: ID!
-    ): FeedbacksResponse!
+    ): FeedbackResponse!
 
   }
 
