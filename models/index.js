@@ -6,6 +6,7 @@ import FeedbackChats from './feedbackChats';
 import FeedbackImages from './feedbackImages';
 import Feedbacks from './feedbacks';
 import Images from './images';
+import Reports from './reports';
 import Users from './users';
 
 // always run validator
@@ -30,5 +31,6 @@ export {
   FeedbackImages,
   Feedbacks,
   Images,
+  Reports,
   Users
 };

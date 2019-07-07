@@ -8,6 +8,7 @@ import typeError from '/graphql/typeDefs/type/error';
 import typeFeedback from '/graphql/typeDefs/type/feedback';
 import typeFeedbackChat from '/graphql/typeDefs/type/feedbackChat';
 import typeImage from '/graphql/typeDefs/type/image';
+import typeReport from '/graphql/typeDefs/type/report';
 import typeResponse from '/graphql/typeDefs/type/response';
 import typeScalar from '/graphql/typeDefs/type/scalar';
 import typeUser from '/graphql/typeDefs/type/user';
@@ -16,6 +17,7 @@ import typeUser from '/graphql/typeDefs/type/user';
 import adminAnnouncement from '/graphql/typeDefs/admin/announcement';
 import adminAuthentication from '/graphql/typeDefs/admin/authentication';
 import adminFeedback from '/graphql/typeDefs/admin/feedback';
+import adminReport from '/graphql/typeDefs/admin/report';
 import adminUser from '/graphql/typeDefs/admin/user';
 
 // student
@@ -32,6 +34,7 @@ const typeDefs = [
   typeFeedback,
   typeFeedbackChat,
   typeImage,
+  typeReport,
   typeResponse,
   typeScalar,
   typeUser,
@@ -39,6 +42,7 @@ const typeDefs = [
   adminAnnouncement,  
   adminAuthentication,
   adminFeedback,
+  adminReport,
   adminUser,
 
   studentAnnouncement,

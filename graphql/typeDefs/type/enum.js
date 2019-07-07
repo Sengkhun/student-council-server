@@ -19,4 +19,9 @@ export default gql`
     student
   }
 
+  enum AllowReportType {
+    announcement
+    feedback
+  }
+
 `;

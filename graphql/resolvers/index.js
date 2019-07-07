@@ -10,6 +10,7 @@ import typeScalar from '/graphql/resolvers/type/scalar';
 import adminAnnouncement from '/graphql/resolvers/admin/announcement';
 import adminAuthentication from '/graphql/resolvers/admin/authentication';
 import adminFeedback from '/graphql/resolvers/admin/feedback';
+import adminReport from '/graphql/resolvers/admin/report';
 import adminUser from '/graphql/resolvers/admin/user';
 
 // student
@@ -27,6 +28,7 @@ const resolvers = [
   adminAnnouncement,
   adminAuthentication,
   adminFeedback,
+  adminReport,
   adminUser,
 
   studentAnnouncement,
