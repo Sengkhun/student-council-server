@@ -13,7 +13,7 @@ const port = process.env.PORT;
 const app = express();
 
 // make public folder static
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(
   graphqlUploadExpress({
