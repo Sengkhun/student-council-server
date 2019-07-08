@@ -14,6 +14,7 @@ const app = express();
 
 // make public folder static
 app.use('/public', express.static(path.join(__dirname, '/public')));
+console.log("express.static ->", path.join(__dirname, '/public'));
 
 app.use(
   graphqlUploadExpress({
