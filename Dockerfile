@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install && bower install --allow-root
+RUN npm install
 
 COPY . .
 
