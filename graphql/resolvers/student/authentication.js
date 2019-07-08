@@ -44,8 +44,7 @@ export default {
         error = errorHandler(error);
         return { ok: false, error };
       }
-    }
-  
+    }  
 
   }
 

@@ -69,7 +69,7 @@ const userSchema = new Schema({
   password: {
     type: passwordSchema
   },
-  oldPassword: {
+  oldPasswords: {
     type: [passwordSchema]
   },
   loginTokens: {

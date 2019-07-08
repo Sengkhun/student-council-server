@@ -77,8 +77,8 @@ export const changePassword = async args => {
   const affected = await Users.updateOne(
     { _id: userId },
     { 
+      $push: { oldPasswords: { ...user.password } },
       $set: { password: { bcrypt: hashedPassword } },
-      $push: { oldPasswords: user.password }
     }
   );
 
