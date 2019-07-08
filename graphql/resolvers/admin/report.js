@@ -5,8 +5,29 @@ import {
   generateFeedbackReport,
   generateAnnouncementReport
 } from '/functions/report/mutation';
+import { getReports } from '/functions/report/query';
 
 export default {
+
+  Query: {
+
+    adminGetAllReports: async (parent, args, { user }) => {
+      let reports = [];
+      try {
+        await isAllow(user, ADMIN);
+        reports = await getReports({ 
+          query: { createdBy: user._id, status: true },
+          sort: '-createdAt'
+        });
+        return { ok: true, reports };
+        
+      } catch (error) {
+        error = errorHandler(error);
+        return { ok: false, reports, error };
+      }
+    }
+
+  },
 
   Mutation: {
 
