@@ -33,7 +33,7 @@
     "merge-graphql-schemas": "1.5.8",
     "moment": "2.24.0",
     "mongoose": "5.5.15",
-    "nodemailer": "6.2.1",
+    "nodemailer": "6.4.16",
     "nodemon": "1.19.0",
     "path": "0.12.7",
     "promise-callbacks": "3.3.0",
